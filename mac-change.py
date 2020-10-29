@@ -1,5 +1,13 @@
+#!/usr/bin/env python3
+# -*- coding: utf-8 -*-
 import subprocess
 
-subprocess.call("ifconfig enp0s3 down", sheel=True)
-subprocess.call("ifconfig enp0s3  hw ether 00:11:22:33:44:55", shell=True)
-subprocess.call("ifconfig enp0s3 up", shell=True)
+
+interface= input('interface > ')
+new_mac = input("new MAC > ")
+
+print("[+] Changing MAC address for " + interface + " to " + new_mac)
+
+subprocess.call("ifconfig " + interface +" down", shell=True)
+subprocess.call("ifconfig " + interface +" hw ether " + new_mac, shell=True)
+subprocess.call("ifconfig " + interface +" up", shell=True)
